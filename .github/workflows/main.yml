@@ -13,7 +13,7 @@ jobs:
       
     - name: 'Check env'
       env:
-        BUILD_ENV: "${{ contains(github.ref, 'alpha') && 'prod' || 'dev' }}"
+        BUILD_ENV: "${{ contains(github.ref, 'alpha') && 'dev' || 'prod' }}"
       run: |
         echo "${{ env.BUILD_ENV }}"
         echo "${{ github.ref }}"
