@@ -1,0 +1,20 @@
+on:
+  push:
+    tags:
+      - v*
+    
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action'
+      uses: actions/checkout@main
+      
+    - name: 'Check env'
+      env:
+        BUILD_ENV: "${{ github.ref == 'refs/heads/main' && 'prod' || 'dev' }}"
+      run: |
+        echo "{{ env.BUILD_ENV }}"
+        echo "{{ github.ref }}"
+        
